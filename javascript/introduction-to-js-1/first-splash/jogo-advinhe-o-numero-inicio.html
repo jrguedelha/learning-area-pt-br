@@ -57,6 +57,7 @@
 
   function conferirPalpite() {
     var palpiteUsuario = Number(campoPalpite.value);
+
     if (contagemPalpites === 1) {
       palpites.textContent = 'Palpites anteriores: ';
     }
@@ -74,7 +75,7 @@
     } else {
         ultimoResultado.textContent = 'Errado!';
         ultimoResultado.style.backgroundColor = 'red';
-        if (palpiteUsuario < numeroAleatorio){
+        if (palpiteUsuario < numeroAleatorio) {
           baixoOuAlto.textContent = 'Seu palpite está muito baixo!';
         } else {
           baixoOuAlto.textContent = 'Seu palpite está muito alto!';
@@ -84,6 +85,17 @@
       contagemPalpites++;
       CampoPalpite.value = '';
       campoPalpite.focus();
+  }
+
+  envioPalpite.addEventListener('click', conferirPalpite);
+
+  function configFimdeJogo() {
+    campoPalpite.disable = true;
+    envioPalpite.disable = true;
+    botaoReinicio = document.createElement('button');
+    botaoReinicio .textContent = 'Iniciar novo jogo';
+    document.body.appendChild(botaoReinicio);
+    botaoReinicio.addEventListener('click', reiniciarJogo);
   }
   
 </script>
